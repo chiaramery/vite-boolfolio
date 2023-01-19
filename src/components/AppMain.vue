@@ -34,6 +34,9 @@ export default {
                 <div class="card mb-4" v-for="project in projects" :key="project.id">
                     <div class="card-body">
                         <h4 class="card-title">{{ project.title }}</h4>
+                        <p class="text-end text-success"> {{
+                            project.title.type ? project.type.title : "Nessuna tipologia"
+                        }}</p>
                         <p class="card-text"> {{ (project.description) }}</p>
                         <a class="btn btn-primary" href="">Per saperne di più</a>
                     </div>
