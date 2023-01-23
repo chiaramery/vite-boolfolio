@@ -1,17 +1,57 @@
 <script>
 export default {
-    name: 'AppHeader',
+    name: "AppHeader",
+    data() {
+        return {
+            navigation: [
+                {
+                    label: 'Home',
+                    routeName: 'home',
+                },
+                {
+                    label: 'About Us',
+                    routeName: 'about'
+                },
+                {
+                    label: 'Projects List',
+                    routeName: 'projects'
+                }
+            ]
+        }
+    }
 }
 </script>
 
 <template>
     <header>
-        <nav>
-            <ul class="nav justify-content-end">
-                <li>
-                    <a class="nav-link" href="#">BOOLFOLIO</a>
-                </li>
-            </ul>
+        <nav class="navbar navbar-expand-lg bg-body-tertiary">
+            <div class="container-fluid">
+                <a class="navbar-brand text-primary" href="#">BOOLFOLIO</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+            </div>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item" v-for="(navItem, index) in navigation" :key="index">
+                        <router-link :to="{ name: navItem.routeName }" class="nav-link" aria-current="page">{{
+                            navItem.label
+                        }}</router-link>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Login</a>
+                    </li>
+                </ul>
+            </div>
         </nav>
     </header>
+
 </template>
+
+<style lang="scss" scoped>
+.router-link-active {
+    text-decoration: underline;
+}
+</style>
